@@ -38,6 +38,11 @@
                             <input type="number" class="form-control" id="pratica_n°" name="pratica_n°" value="{{old ('pratica_n°' , $pratica_to_update->pratica_n°)}}" required>
                         </div>
 
+                        <div class="col-md-6">
+                            <label for="meet_date" class="form-label">Data Appuntamento</label>
+                            <input type="date" class="form-control" id="meet_date" name="meet_date"  value="{{old ('meet_date' , $pratica_to_update->meet_date )}}" required>
+                          </div>
+
                         <div class="col-md-12">
                             <label for="descrizione" class="form-label">Descrizione del caso:</label>
                             <textarea type="date" class="form-control" id="descrizione" name="descrizione">{{old ('descrizione') ? old ('descrizione') : $pratica_to_update->descrizione}}</textarea>

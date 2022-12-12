@@ -48,13 +48,18 @@
                             <input type="number" class="form-control" id="pratica_n°" name="pratica_n°" value="{{old('pratica_n°')}}" required>
                         </div>
 
+                        <div class="col-md-6">
+                          <label for="meet_date" class="form-label">Data Appuntamento</label>
+                          <input type="date" class="form-control" id="meet_date" name="meet_date"  value="{{old('meet_date')}}" required>
+                        </div>
+
                         <div class="col-md-12">
                             <label for="descrizione" class="form-label">Descrizione del caso:</label>
                             <textarea type="date" class="form-control" id="descrizione" name="descrizione">{{old('descrizione')}}</textarea>
                         </div>
 
                         <div class="col-12">
-                          <button class="btn btn-primary mt-3" type="submit" value="salva la nuova pratica">Submit form</button>
+                          <button class="btn btn-primary mt-3" type="submit" value="salva la nuova pratica">Inserisci pratica</button>
                         </div>
                       </form>
                 </div>

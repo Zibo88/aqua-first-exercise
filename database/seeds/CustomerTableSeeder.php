@@ -20,6 +20,7 @@ class CustomerTableSeeder extends Seeder
             $customer->date_of_birth = $faker->dateTime();
             $customer->pratica_n° = $faker->randomNumber(5, false);
             $customer->descrizione = $faker->text();
+            $customer->meet_date = $faker->dateTime();
             $customer->save();
         }
       

@@ -19,10 +19,17 @@ class CustomerController extends Controller
         $request_info = $request->all();
 	    $show_deleted_message = isset( $request_info['deleted']) ? $request_info['deleted'] : null;
         $customers = Customer::all();
-     
+        $customers = Customer::orderBy('meet_date' , 'asc')->get();
+       
+        // foreach($customers as $customer){
+        //     $meet_date = $customer->meet_date;
+        //     $date =  $this->getLicenseExpireAttribute($customer->meet_date);
+        // }
+
         $data = [
             'customers' => $customers,
-            'show_deleted_message'=> $show_deleted_message
+            'show_deleted_message'=> $show_deleted_message,
+            // 'meet_date' => $meet_date,
         ];
         return view('admin.index', $data);
     }
@@ -48,7 +55,7 @@ class CustomerController extends Controller
         $request->validate($this->getValidationRules());
 
         $form_data_create = $request->all();
-
+      
         $customer_to_create = new Customer();
 
         $customer_to_create->name =  $form_data_create['name'];
@@ -57,6 +64,8 @@ class CustomerController extends Controller
         $customer_to_create->date_of_birth =  $form_data_create['date_of_birth'];
         $customer_to_create->pratica_n° =  $form_data_create['pratica_n°'];
         $customer_to_create->descrizione =  $form_data_create['descrizione'];
+        $customer_to_create->meet_date =  $form_data_create['meet_date'];
+
         $customer_to_create->save();
 
         return redirect()->route('admin.customers.show' , ['customer' => $customer_to_create->id]);
@@ -73,11 +82,12 @@ class CustomerController extends Controller
         $pratica_singola = Customer::FindOrFail($id);
         
         $date_of_birth =  $this->getLicenseExpireAttribute($pratica_singola['date_of_birth']);
-      
+        $meet_date =  $this->getLicenseExpireAttribute($pratica_singola['meet_date']);
         
         $data = [
             'pratica_singola' => $pratica_singola,
-            'date_of_birth' => $date_of_birth
+            'date_of_birth' => $date_of_birth,
+            'meet_date' => $meet_date,
         ];
 
         return view('admin.show', $data);
@@ -96,10 +106,12 @@ class CustomerController extends Controller
         $pratica_to_update = Customer::FindOrFail($id);
 
         $date_of_birth =  $this->getLicenseExpireAttribute($pratica_to_update['date_of_birth']);
+        $meet_date =  $this->getLicenseExpireAttribute($pratica_to_update['meet_date']);
 
         $data = [
             'pratica_to_update' => $pratica_to_update,
-            'date_of_birth' => $date_of_birth
+            'date_of_birth' => $date_of_birth,
+            'meet_date' => $meet_date,
         ];
 
         return view('admin.edit', $data);
@@ -126,6 +138,7 @@ class CustomerController extends Controller
         $pratica_updated->date_of_birth =  $form_data_edit['date_of_birth'];
         $pratica_updated->pratica_n° =  $form_data_edit['pratica_n°'];
         $pratica_updated->descrizione =  $form_data_edit['descrizione'];
+        $pratica_updated->meet_date = $form_data_edit['meet_date'];
         $pratica_updated->update();
 
         return redirect()->route('admin.customers.show' , ['customer' => $pratica_updated->id]);

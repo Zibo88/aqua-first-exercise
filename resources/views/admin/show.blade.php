@@ -15,6 +15,7 @@
                             <li>Data di nascita:{{$date_of_birth->format('d-m-Y')}}</li>
                             <li>Email: {{$pratica_singola->email}}</li>
                             <li>Pratica n°: {{$pratica_singola->pratica_n°}}</li>
+                            <li>Data Appuntamento: {{$meet_date->format('d-m-Y H:m')}}</li>
                             <li>Descrizione del caso: <br>{{$pratica_singola->descrizione}}</li>
                         </ul>
 
