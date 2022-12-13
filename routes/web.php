@@ -27,7 +27,7 @@ Route::middleware('auth')
 });
 
 Route::get('/', function () {
-    return view('guest.home');
+    return view('home');
 });
 
 

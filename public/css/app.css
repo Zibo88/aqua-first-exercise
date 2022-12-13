@@ -10951,3 +10951,7 @@ ul {
   list-style-type: none;
 }
 
+.nav-link {
+  color: lightblue;
+}
+

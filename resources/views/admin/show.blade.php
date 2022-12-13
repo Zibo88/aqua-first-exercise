@@ -12,10 +12,10 @@
                     <div class="pratica">
                         <ul>
                             <h5>Nome e Cognome: {{$pratica_singola->name . ' '}} {{$pratica_singola->lastname}} </h5>
-                            <li>Data di nascita:{{$date_of_birth->format('d-m-Y')}}</li>
+                            <li>Data di nascita:{{$pratica_singola->date_of_birth}}</li>
                             <li>Email: {{$pratica_singola->email}}</li>
                             <li>Pratica n°: {{$pratica_singola->pratica_n°}}</li>
-                            <li>Data Appuntamento: {{$meet_date->format('d-m-Y H:m')}}</li>
+                            <li>Data Appuntamento: {{$pratica_singola->meet_date}}</li>
                             <li>Descrizione del caso: <br>{{$pratica_singola->descrizione}}</li>
                         </ul>
 

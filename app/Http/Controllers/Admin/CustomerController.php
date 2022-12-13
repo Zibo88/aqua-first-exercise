@@ -20,16 +20,10 @@ class CustomerController extends Controller
 	    $show_deleted_message = isset( $request_info['deleted']) ? $request_info['deleted'] : null;
         $customers = Customer::all();
         $customers = Customer::orderBy('meet_date' , 'asc')->get();
-       
-        // foreach($customers as $customer){
-        //     $meet_date = $customer->meet_date;
-        //     $date =  $this->getLicenseExpireAttribute($customer->meet_date);
-        // }
 
         $data = [
             'customers' => $customers,
             'show_deleted_message'=> $show_deleted_message,
-            // 'meet_date' => $meet_date,
         ];
         return view('admin.index', $data);
     }
@@ -80,19 +74,15 @@ class CustomerController extends Controller
     public function show($id)
     {
         $pratica_singola = Customer::FindOrFail($id);
-        
-        $date_of_birth =  $this->getLicenseExpireAttribute($pratica_singola['date_of_birth']);
-        $meet_date =  $this->getLicenseExpireAttribute($pratica_singola['meet_date']);
-        
+        $pratica_singola->meet_date = Carbon::parse($pratica_singola->meet_date)->format('d-m-Y'); 
+        $pratica_singola->date_of_birth = Carbon::parse($pratica_singola->date_of_birth)->format('d-m-Y'); 
+
         $data = [
             'pratica_singola' => $pratica_singola,
-            'date_of_birth' => $date_of_birth,
-            'meet_date' => $meet_date,
+            'pratica_singola->meet_date' => $pratica_singola->meet_date
         ];
 
         return view('admin.show', $data);
-
-
     }
 
     /**
@@ -170,8 +160,7 @@ class CustomerController extends Controller
         ];
     }
 
-
     public function getLicenseExpireAttribute($date){
-    return Carbon::parse($date);
+    return Carbon::parse($date)->format('d-m-y H:i:s');
     }
 }

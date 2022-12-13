@@ -21,7 +21,6 @@
                             <h5> Nome e Cognome: {{$customer->name . ' '}} {{$customer->lastname}} </h5>
                             <li>Email: <br> {{$customer->email}}</li>
                             <li>Pratica n°: {{$customer->pratica_n°}}</li>
-                            <li>Data appuntamento: <br> {{$customer->meet_date}}</li>
                         </ul>
                         <a class="btn btn-primary" href="{{route('admin.customers.show', ['customer' =>$customer->id])}}"> Maggiori info </a>
                     </div>

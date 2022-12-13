@@ -37,23 +37,23 @@
                             <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}">
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-6 my-3">
                           <label for="date_of_birth" class="form-label">Data di nascita</label>
                           <input type="date" class="form-control" id="date_of_birth" name="date_of_birth"  value="{{old('date_of_birth')}}" required>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-6 my-3">
                         
                             <label for="pratica_n°" class="form-label">Pratica n°</label>
                             <input type="number" class="form-control" id="pratica_n°" name="pratica_n°" value="{{old('pratica_n°')}}" required>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-6 my-3">
                           <label for="meet_date" class="form-label">Data Appuntamento</label>
                           <input type="date" class="form-control" id="meet_date" name="meet_date"  value="{{old('meet_date')}}" required>
                         </div>
 
-                        <div class="col-md-12">
+                        <div class="col-md-12 my-3">
                             <label for="descrizione" class="form-label">Descrizione del caso:</label>
                             <textarea type="date" class="form-control" id="descrizione" name="descrizione">{{old('descrizione')}}</textarea>
                         </div>
